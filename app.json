@@ -12,6 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,7 +27,7 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router", "expo-font"
     ]
   }
 }
