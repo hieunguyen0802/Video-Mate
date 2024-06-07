@@ -2,7 +2,6 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { icons } from "../../constants";
 
 const TabIcon = ({ icon, iconName, color, focused }) => {
   return (

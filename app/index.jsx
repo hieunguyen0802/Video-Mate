@@ -1,27 +1,32 @@
-import { useEffect } from "react";
-import { StatusBar } from "expo-status-bar";
-import { Text, ScrollView, View, Image} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
 
-import { images } from "../constants";
+import { Text, ScrollView, View, Image, TouchableOpacity} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Redirect, router } from "expo-router";
+
+import CustomButton from "../components/CustomButton";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
-  useEffect(() => {
-    console.log( typeof images.logo);
-  }, []);
   return (
     <SafeAreaView  className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
-        <View className="w-full justify-center items-center h-full px-4">
-        
-            <Image source={images.logo}
-            width={100}
-             height={100} 
-             resizeMode="contain" />
-            <Text className="text-white text-5xl" >{images.logo + 1}</Text>
+        <View className="w-full h-full justify-around items-center px-4 flex-col"> 
+          <Image source = {{uri: 'https://cdn.pixabay.com/photo/2022/08/22/03/19/logo-7402591_1280.png'}}
+            className="w-[230px] h-[184px]" resizeMode="contain" />
+          
+          <Text className="text-center text-white text-3xl font-bold">Hiking & climbing guide with 
+            <Text className="text-secondary-200"> Climbmate </Text> 
+          </Text>
+
+          <CustomButton  
+            buttonLabel="Continue with email" containerStyles="w-11/12 mt-7"
+            onPress={() => router.push('/signIn')} 
+          />
+
         </View>
+        
       </ScrollView>
+      <StatusBar backgroundColor="#161622" style="light"/>
     </SafeAreaView>
   );
 }
