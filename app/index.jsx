@@ -2,6 +2,8 @@
 import { Text, ScrollView, View, Image, TouchableOpacity} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Redirect, router } from "expo-router";
+import 'react-native-url-polyfill/auto'
+
 
 import CustomButton from "../components/CustomButton";
 import { StatusBar } from "expo-status-bar";
@@ -19,7 +21,7 @@ export default function App() {
           </Text>
 
           <CustomButton  
-            buttonLabel="Continue with email" containerStyles="w-11/12 mt-7"
+            buttonLabel="Continue with email" textStyles="text-xl" containerStyles="w-11/12 mt-7"
             onPress={() => router.push('/signIn')} 
           />
 

@@ -19,7 +19,7 @@ const [isShowPassword, setIsShowPassword] = useState(false)
         />
         {fieldLabel.includes('Password') && (
             <TouchableOpacity onPress={() => setIsShowPassword(!isShowPassword)}>
-                <Ionicons name={!isShowPassword ? "eye-outline" : "eye-off-outline"} size = {24} />
+                <Ionicons name={!isShowPassword ? "eye-outline" : "eye-off-outline"} size = {24} color="white"/>
             </TouchableOpacity>
         )}
         </View>
