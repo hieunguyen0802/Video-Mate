@@ -9,7 +9,7 @@ const [isShowPassword, setIsShowPassword] = useState(false)
   return (
     <View className={`space-y-2 ${otherStyles}`}>
         <Text className="text-base text-gray-100 font-pmedium">{fieldLabel}</Text>
-        <View className="w-full h-16 px-4 bg-black-100 border-2 rounded-2xl border-black-200 focus:border-secondary-100 items-center flex-row">
+        <View className="w-full h-16 px-4 bg-black-100 border-2 rounded-2xl border-black-200 focus:border-cyan-400 items-center flex-row">
         <TextInput className="flex-1 text-white font-psemibold text-base w-full"
             value={value}
             placeholder={placeHolder}

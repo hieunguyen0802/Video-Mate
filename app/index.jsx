@@ -7,8 +7,15 @@ import 'react-native-url-polyfill/auto'
 
 import CustomButton from "../components/CustomButton";
 import { StatusBar } from "expo-status-bar";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export default function App() {
+
+  const {isLoading, isLoggedIn} = useContext(AuthContext)
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home"/>
+
   return (
     <SafeAreaView  className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: "100%" }}>

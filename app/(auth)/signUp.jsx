@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Alert } from 'react-native'
 import React, {useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Link } from 'expo-router'
@@ -14,12 +14,25 @@ const SignUp = () => {
   const [form, setForm] = useState({
     userName: '',
     email: '',
-    password: '' 
+    password: ''  
   })
 
-  const handleSignIn = () => {
-    console.log("sign up clicked")
-    createAccount();
+  const handleSignUp = async  () => {
+    if (!form.userName || !form.email || !form.password) {
+      Alert.alert('Error', 'Please fill in all the fields')
+    }
+
+    setIsSubmitting(true)
+    try {
+      const result = await createAccount(form);
+        // set to global state using context
+      router.replace('/home')
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+    
   }
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -48,7 +61,7 @@ const SignUp = () => {
           />
 
 
-          <CustomButton  buttonLabel="Sign Up" onPress={handleSignIn} containerStyles="mt-7" isLoading={isSubmitting}/>
+          <CustomButton  buttonLabel="Sign Up" onPress={handleSignUp} containerStyles="mt-7" isLoading={isSubmitting}/>
 
           <View className="justify-center pt-5 gap-3 flex-row">
             <Text className="text-lg text-gray-100 font-pregular">

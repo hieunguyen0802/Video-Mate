@@ -3,8 +3,9 @@ import React from 'react'
 
 const Create = () => {
   return (
-    <View>
+    <View className="text-center justify-center items-center bg-white flex-1">
       <Text>Create</Text>
+      
     </View>
   )
 }

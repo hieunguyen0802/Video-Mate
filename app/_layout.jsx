@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React, {useEffect} from 'react'
-import { SplashScreen, Stack } from 'expo-router'
-import {useFonts} from 'expo-font'
+import { PaperProvider } from 'react-native-paper';
+import React, { useEffect } from "react";
+import { SplashScreen, Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import { AuthProvider } from "../context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
-
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
     "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -18,27 +18,32 @@ const RootLayout = () => {
     "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
     "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
   });
-  
+
   useEffect(() => {
     if (error) throw error;
-  
+
     if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, error]);
-  
+
   if (!fontsLoaded && !error) {
     return null;
   }
 
   return (
-    <Stack screenOptions = {{headerShown: false}}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="(auth)" />
-      <Stack.Screen name="(tabs)" />
-      {/* <Stack.Screen name="/search/[query]" /> */}
-    </Stack>
-  )
-}
+    <PaperProvider>
 
-export default RootLayout
+      <AuthProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="(auth)" />
+            <Stack.Screen name="(tabs)" />
+            {/* <Stack.Screen name="/search/[query]" /> */}
+        </Stack>
+      </AuthProvider>
+    </PaperProvider>
+  );
+};
+
+export default RootLayout;

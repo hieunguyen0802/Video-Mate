@@ -3,9 +3,10 @@ import React from 'react'
 
 const Bookmark = () => {
   return (
-    <View>
-      <Text>Bookmark</Text>
-    </View>
+    <View className="text-center justify-center items-center bg-white flex-1">
+      <Text>bookmark</Text>
+    
+  </View>
   )
 }
 
